@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href= "{{ url_for('static',filename='styles/styles.css') }}">
+    <title>Cloud Computing Project</title>
+  </head>
+  
+  <body>
+    <header  class="header">
+      <img class="logo" src="{{url_for('static', filename='styles/logo.webp')}}">
+      <h1 class="title">Super Resolution Web App</h1>
+      <p class="text">Put some text Inside p</p>
+
+  </header>
+    <div class="content" >
+    
+        <h2> {{ msg }}</h2>
+    
+        <div>
+          <h3>Upload your Image here:</h3>
+          <form method="POST" action="/upload" enctype=multipart/form-data>
+            <input type=file name=file>
+            <input type=submit value=Upload>
+          </form>
+        </div>
+    
+    
+        <div>
+          <h3>These are your uploaded files:</h3>
+          <p>Click on the filename to download it.</p>
+          <ul>
+            {% for item in contents %}
+              <li>
+                <a href="/download/{{ item.Key }}"> {{ item.Key }} </a>
+              </li>
+            {% endfor %}
+          </ul>
+    
+        </div>
+
+    </div>
+  </body>
+</html>
