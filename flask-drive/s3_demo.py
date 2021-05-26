@@ -1,5 +1,19 @@
 import boto3
+import tensorflow as tf
+import numpy as np 
 
+def image_predict(img, model):
+
+    class_names = ['buildings', 'forest', 'glacier', 'mountain', 'sea', 'street']
+    img = tf.keras.preprocessing.image.load_img(img, target_size=(150, 150))
+    img_array = tf.keras.preprocessing.image.img_to_array(img)
+    img_array = tf.expand_dims(img_array, 0)
+
+    predictions = model.predict(img_array)  
+    score = tf.nn.softmax(predictions[0])
+    title=(class_names[np.argmax(score)])
+
+    return title 
 
 def upload_file(file_name, bucket):
     """
