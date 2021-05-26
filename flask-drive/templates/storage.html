@@ -12,7 +12,7 @@
     <header  class="header">
       <img class="logo" src="{{url_for('static', filename='styles/logo.webp')}}">
       <h1 class="title">Super Classification Web App</h1>
-      <p class="text">Stress our Machine Learning algorithm here</p>
+      <p class="text">Stress our Machine Learning algorithm</p>
 
   </header>
     <div class="content" >
@@ -21,12 +21,13 @@
     
         <div>
           <h3>Upload your Image here:</h3>
-          <form method="POST" action="/upload" enctype=multipart/form-data>
+          <form method="POST" action="" enctype=multipart/form-data>
             <input type=file name=file>
             <input type=submit value=Upload>
           </form>
+          <p>{{label}}</p>
         </div>
-    
+        
     
         <div>
           <h3>These are your uploaded files:</h3>
