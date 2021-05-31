@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href= "{{ url_for('static',filename='styles/styles.css') }}">
+    <title>Cloud Computing Project</title>
+  </head>
+  
+  <body>
+    <header  class="header">
+      <img class="logo" src="{{url_for('static', filename='styles/logo.webp')}}" href ="{{ url_for('static',filename='flask-drive\templates\storage.html') }}" >
+      <h1 class="title">Super Classification Web App</h1>
+      <p class="text">Stress our Deep Learning algorithm</p>
+
+  </header>
+    <div class="content" >
+    
+        <h2> {{msg}}</h2>
+    
+        <div>
+          <p>filename: {{files}}</p>
+          <h3>{{label}}</h3>
+
+          <div class="buttons">
+            <form action="/test" method="POST">
+              <div class="action_btn">
+                <a href="{{ url_for('static',filename='flask-drive\templates\storage.html') }}">
+                  <button>YES</button>
+               </a>
+              <label>If NO, what is the correct ones? </label>
+              <select id ="comp_select" name="comp_select" class="selectpicker form-control">
+                {% for o in data %}
+                <option value="{{ o.name }}">{{ o.name }}</option>
+                {% endfor %}
+              </select>
+              <button type="submit">submit</button>
+            </form>
+            </div>
+
+        </div>
+        </div>
+        
+    
+  
+
+    </div>
+  </body>
+</html>

@@ -2,7 +2,7 @@ import os
 
 from os.path import join, dirname, realpath
 
-from flask import Flask, render_template, request, redirect, send_file, url_for
+from flask import Flask, render_template, request, redirect, send_file, url_for, send_from_directory
 
 from s3_demo import list_files, download_file, upload_file, image_predict
 
@@ -10,6 +10,7 @@ import tensorflow as tf
 
 from werkzeug.utils import secure_filename
 
+import csv 
 
 #upload image
 #UPLOAD_FOLDER = "uploads"
@@ -31,7 +32,7 @@ def storage():
     contents = list_files("flaskdrive")
     return render_template('storage.html', contents=contents)
 
-@app.route("/", methods = ["POST", "GET"])
+@app.route("/up", methods = ["POST", "GET"])
 def upload_file():
     if request.method == 'POST':
         f = request.files['file']
@@ -39,16 +40,31 @@ def upload_file():
         if f :
             filename = secure_filename(f.filename)
             file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            print('file_path')
+            
             f.save(file_path)
-            output = image_predict(file_path, model)
-    
-    return render_template('storage.html', label = output )
+            output = f"Is {image_predict(file_path, model)} the correct classification?" 
 
-@app.route('/uploads/<filename>')
-def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'],
-                               filename)
+    return render_template('storage2.html', label = output,files = filename ,
+    data=[{'name':'sea'}, {'name':'mountain'}, {'name':'forest'},  {'name':'street'},  
+            {'name':'buildings'},  {'name':'glacier'}]) 
+
+
+
+@app.route("/test", methods = ["GET", "POST"])
+def save_feed():
+    if request.method == 'POST': 
+        correct_label = str(request.form.get('comp_select'))
+        feedfile = open("flask-drive/feed/user.csv", "a")
+        with feedfile:
+            writer = csv.writer(feedfile)
+            writer.writerow(correct_label)
+    contents = list_files("flaskdrive")
+    return render_template('storage.html', msg = "Feedback send! Retry it!",  contents=contents)
+
+
+
+
+
 
 ''''
 @app.route("/upload", methods=['POST'])

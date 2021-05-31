@@ -4,7 +4,7 @@ import numpy as np
 
 def image_predict(img, model):
 
-    class_names = ['buildings', 'forest', 'glacier', 'mountain', 'sea', 'street']
+    class_names = ['BUILDINGS', 'FOREST', 'GLACIER', 'MOUNTAIN', 'SEA', 'STREET']
     img = tf.keras.preprocessing.image.load_img(img, target_size=(150, 150))
     img_array = tf.keras.preprocessing.image.img_to_array(img)
     img_array = tf.expand_dims(img_array, 0)

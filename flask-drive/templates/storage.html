@@ -12,35 +12,26 @@
     <header  class="header">
       <img class="logo" src="{{url_for('static', filename='styles/logo.webp')}}">
       <h1 class="title">Super Classification Web App</h1>
-      <p class="text">Stress our Machine Learning algorithm</p>
+      <p class="text">Stress our Deep Learning algorithm</p>
 
   </header>
     <div class="content" >
     
-        <h2> {{ msg }}</h2>
+        <p> {{ msg }}</p>
     
         <div>
           <h3>Upload your Image here:</h3>
-          <form method="POST" action="" enctype=multipart/form-data>
+          <form method="POST" action="/up" enctype=multipart/form-data>
             <input type=file name=file>
             <input type=submit value=Upload>
           </form>
           <p>{{label}}</p>
+
+    
         </div>
         
     
-        <div>
-          <h3>These are your uploaded files:</h3>
-          <p>Click on the filename to download it.</p>
-          <ul>
-            {% for item in contents %}
-              <li>
-                <a href="/download/{{ item.Key }}"> {{ item.Key }} </a>
-              </li>
-            {% endfor %}
-          </ul>
-    
-        </div>
+  
 
     </div>
   </body>
