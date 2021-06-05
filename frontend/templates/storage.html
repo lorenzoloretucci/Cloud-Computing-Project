@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href= "{{ url_for('static',filename='styles/styles.css') }}">
+    <title>Cloud Computing Project</title>
+  </head>
+  
+  <body>
+    <header  class="header">
+      <img class="logo" src="{{url_for('static', filename='styles/logo.webp')}}">
+      <h1 class="title">Super Classification Web App</h1>
+      <p class="text">Stress our Deep Learning algorithm</p>
+
+  </header>
+    <div class="content" >
+        <h2> {{ msg_1 }}</h2>
+        <h2> {{ msg_2 }}</h2>
+
+        <div>
+          <h3>Upload your Image here:</h3>
+          <form method="POST" action="/up" enctype=multipart/form-data>
+            <input type=file name=image_file>
+            <input type=submit value=Upload>
+          </form>
+          <p>{{label}}</p>
+
+    
+        </div>
+        
+    
+  
+
+    </div>
+  </body>
+</html>

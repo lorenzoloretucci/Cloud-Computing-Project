@@ -1,0 +1,8 @@
+<div class="action_btn">
+    <label>What is the correct label? </label><br>
+    <select id ="comp_select" name="comp_select" class="selectpicker form-control">
+        {% for o in data %}
+            <option value="{{ o.name }}">{{ o.name }}</option>
+        {% endfor %}
+    </select>
+</div>

@@ -1,0 +1,26 @@
+.header {
+    text-align: center;
+    
+}
+
+.content{
+    text-align: center;
+}
+.main{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.logo{
+    width: 120px;
+}
+
+.buttons {
+    width: 200px;
+    margin: 0 auto;
+    display: inline;}
+    
+.action_btn {
+    width: 200px;
+    margin: 0 auto;
+    display: inline;}
