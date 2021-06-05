@@ -1,7 +1,0 @@
-flask
-flask_restful
-keras
-tensorflow
-opencv-python
-Pillow
-boto3
