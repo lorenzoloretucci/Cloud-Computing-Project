@@ -1,2 +1,2 @@
 # Cloud-Computing-Project
-Final CLC project, work in progress..... 
+Final CLC project source code  
