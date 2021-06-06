@@ -23,7 +23,7 @@ callback1 = EarlyStopping(monitor='val_acc', patience=4)
 
 history = model.fit(train_gen, epochs=2, validation_data = validation_gen, callbacks=callback1)
 
-model.save("model_inc.h5")
+model.save("'best_model_2_inc.h5")
 
 
 
